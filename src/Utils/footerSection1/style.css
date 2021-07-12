@@ -1,0 +1,44 @@
+.footer1 {
+  margin-top: 60px;
+  height: 220px;
+  width: 100%;
+  background: linear-gradient(
+      0deg,
+      rgba(10, 42, 53, 0.5),
+      rgba(2, 204, 255, 0.5)
+    ),
+    url(../../Images//footer1.jpg) repeat;
+  text-align: center;
+  padding-top: 20px;
+}
+
+.Boost {
+  color: white;
+  font-weight: 600;
+  font-size: 40px;
+}
+
+#button4 {
+  font-weight: 600;
+  height: 50px;
+  width: 180px;
+  background-color: #15e4e4;
+  border: none;
+  border-radius: 40px;
+  font-size: 18px;
+}
+
+#button4:hover {
+  background-color: rgb(62, 153, 196);
+}
+
+@media only screen and (max-width: 600px) {
+  .footer1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .Boost {
+    font-size: 25px;
+  }
+}

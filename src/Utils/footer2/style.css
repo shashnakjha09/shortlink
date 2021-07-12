@@ -1,0 +1,26 @@
+.normal {
+  color: white;
+  font-size: 35px;
+}
+
+.page-footer {
+  background-color: black;
+}
+
+.main-cate {
+  color: white;
+  font-weight: 600;
+  font-size: 17px;
+}
+.list-unstyled > li > a {
+  color: white;
+  text-decoration: none;
+}
+
+.list-unstyled {
+  margin-top: 20px;
+}
+
+.list-unstyled > li > a:hover {
+  color: rgb(5, 173, 252);
+}

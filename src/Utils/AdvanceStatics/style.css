@@ -1,0 +1,31 @@
+.AdvancedStatics {
+  margin-top: 60px;
+  text-align: center;
+}
+
+#mainheading1 {
+  font-size: 40px;
+  font-weight: 700;
+}
+#mainpara1 {
+  font-size: 22px;
+  font-weight: 600;
+  color: gray;
+}
+
+@media only screen and (max-width: 600px) {
+  .AdvancedStatics {
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  #mainheading1 {
+    font-size: 27px;
+  }
+
+  #mainpara1 {
+    font-size: 15px;
+    font-weight: 600;
+    color: gray;
+  }
+}
