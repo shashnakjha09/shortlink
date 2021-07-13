@@ -85,18 +85,18 @@
 
   .linksearchbox {
     height: 170px;
-    width: 330px;
+    width: 98%;
     flex-direction: column;
   }
 
   .searchfield {
     height: 45px;
-    width: 270px;
+    width: 100%;
   }
 
   #button {
     background-color: #2acfcf;
-    width: 280px;
+    width: 100%;
     height: 45px;
     font-weight: 600;
     font-size: 16px;
@@ -107,7 +107,7 @@
     position: relative;
     top: 15px;
     height: 43px;
-    width: 270px;
+    width: 100%;
     font-size: 20px;
   }
 }
