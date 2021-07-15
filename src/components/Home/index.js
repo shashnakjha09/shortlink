@@ -1,13 +1,38 @@
-import React from 'react'
+import React , {useState} from 'react';
+import { CopyToClipboard } from "react-copy-to-clipboard";
+
 import {Container} from "react-bootstrap";
 import {Button} from "react-bootstrap"
 import "./Homestyle.css"
 import Homepageimage from "../../Images/Home_image.svg"
-import Shortedlink from "../../Utils/shortedlink";
 import Advancestatics from "../../Utils/AdvanceStatics"
 import Footer1 from "../../Utils/footerSection1"
 import Footer from "../../Utils/footer2"
+
+import {getShorteddata} from "../../Getdata"
 function Home() {
+       const[input , setInput] = useState('');
+       const[output , setOutput] = useState('');
+       const [isCopied, setIsCopied] = useState(false);
+
+       const onCopyText = () => {
+         setIsCopied(true);
+         setTimeout(() => {
+           setIsCopied(false);
+         }, 1000);
+       };
+
+    const getData = async () => {
+        try{
+            const data1 = await getShorteddata(input);
+            setOutput(data1.result);
+            // setInput('');
+
+        }catch(err){
+            console.log(err.message);
+        }
+    }
+
     return (
         <>
         <br></br>
@@ -28,16 +53,41 @@ function Home() {
                 <Container>
                 <input
                 type="placeholder" 
-                className="searchfield"/>
+                className="searchfield"
+                onChange={(e) => setInput(e.target.value)}
+                value={input}
+                />
                 </Container>
                 <Container>
-                <Button type="button" id="button2">Shorten it</Button>
+                <Button type="button" id="button2" onClick={() => getData()}>Shorten it</Button>
                 </Container>
             </Container>
         </Container>
         <br></br>
         <Container>
-            <Shortedlink/>
+        <Container className="outputmain">
+                <Container className="input">
+                     <p>{output ? input : "facebook.com"}</p>
+                     <hr className="hr"></hr>
+                </Container>
+                
+                   <Container className="output">
+                    <Container className="outputlink">
+                        <p id="Linktobecopy">{output.short_link ? output.short_link : "shrtco.de/pNz1io" }</p>
+                    </Container>
+                    <Container className="outputcopybutton">
+                    <CopyToClipboard text={output.short_link} onCopy={onCopyText}>
+                    <div className="copy-area">
+                        <Button id="button3">Copy</Button>
+                        <span className={`copy-feedback ${isCopied ? "active" : "d-none"}`}>
+                          Copied!
+                        </span>
+                        </div>
+                        </CopyToClipboard>
+                    </Container>
+                </Container>
+                
+            </Container>
         </Container>
         
         <Container>
