@@ -14,6 +14,7 @@ function Home() {
        const[input , setInput] = useState('');
        const[output , setOutput] = useState('');
        const [isCopied, setIsCopied] = useState(false);
+       const[isloading , setIsLoading] = useState(false);
 
        const onCopyText = () => {
          setIsCopied(true);
@@ -24,13 +25,29 @@ function Home() {
 
     const getData = async () => {
         try{
+            setIsLoading(true);
             const data1 = await getShorteddata(input);
             setOutput(data1.result);
+            setIsLoading(false);
             // setInput('');
 
         }catch(err){
             console.log(err.message);
         }
+    }
+
+    const outputSet = () => {
+        if(output){
+           return output.short_link;
+       }
+        else if(isloading){
+           return "loading...";
+       }
+        else {
+            return "shrtco.de/KZz1hp";
+        }
+
+
     }
 
     return (
@@ -73,7 +90,8 @@ function Home() {
                 
                    <Container className="output">
                     <Container className="outputlink">
-                        <p id="Linktobecopy">{output.short_link ? output.short_link : "shrtco.de/pNz1io" }</p>
+                        {/* <p id="Linktobecopy">{output.short_link ? output.short_link : "shrtco.de/pNz1io" }</p> */}
+                        <p id="Linktobecopy">{outputSet()}</p>
                     </Container>
                     <Container className="outputcopybutton">
                     <CopyToClipboard text={output.short_link} onCopy={onCopyText}>
